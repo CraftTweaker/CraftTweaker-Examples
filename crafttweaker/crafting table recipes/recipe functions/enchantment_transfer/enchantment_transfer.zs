@@ -29,9 +29,12 @@ recipes.addShapeless("enchantment_transfer",
         //
         //If it is, return the output 
         //We could also use <minecraft:enchanted_book> instead of out
-        //
+        if(ins.pickaxe.tag has "ench") {
+            return out.withTag({StoredEnchantments: ins.pickaxe.tag.ench});
+        }
+
         //Else, we return a normal book
-        return ins.pickaxe.tag has "ench" ? out.withTag({StoredEnchantments: ins.pickaxe.tag.ench}) : <minecraft:book>;
+        return <minecraft:book>;
     }, 
     //We don't need a crafting action here so let's provide null
     null);
