@@ -3,12 +3,14 @@
 import crafttweaker.event.CommandEvent;
 import crafttweaker.player.IPlayer;
 
-//We want to register a command handler that prints a message to the player's chat if they execue the "/ct syntax" command.
-//This handler then also gives them Regeneration III for 21 seconds.
-//Command handlers are functions with a specific event type that needs to be provided.
-//Here we use the commandEvent, hence the "as CommandEvent".
-//To actually subscribe to the commandEvents we use "events.onCommand" and supply the command handler.
-//Important, the CommandEvent type needs to be imported, otherwise we'd have to use "as crafttweaker.event.CommandEvent"
+/* 
+ * We want to register a command handler that prints a message to the player's chat if they execue the "/ct syntax" command.
+ * This handler then also gives them Regeneration III for 21 seconds.
+ * Command handlers are functions with a specific event type that needs to be provided.
+ * Here we use the commandEvent, hence the "as CommandEvent".
+ * To actually subscribe to the commandEvents we use "events.onCommand" and supply the command handler.
+ * Important, the CommandEvent type needs to be imported, otherwise we'd have to use "as crafttweaker.event.CommandEvent"
+ */
 events.onCommand(function(event as CommandEvent) {
     //First we store the command in a local variable.
     //This way we don't always have to call "event.command.XXX" but can use "command.XXX"
