@@ -1,5 +1,5 @@
 /*
- * EXCERSIZE 1: 
+ * EXERCISE 1: 
  *
  * Write a function "variance" that calculates and prints the average value and the variance of numbers in a given (double) array.
  * 
@@ -14,7 +14,7 @@
  *
  *
  * If you take the square root of the variance you get the standard deviation.
- * You could take the Heron-Algorithm from an earlier excersize to calculate it if you wanted to.
+ * You could take the Heron-Algorithm from an earlier exercise to calculate it if you wanted to.
  *
  */
 
@@ -52,7 +52,7 @@ variance([1.0, 2.0, 3.0]);
 
 
 /*
- * EXCERSIZE 2:
+ * EXERCISE 2:
  * 
  * The fibonacci-sequence starts with F0 = 1 and F1 = 1 and is defined as
  * 
@@ -81,7 +81,7 @@ for fib in fibonacci(10) { //1,1,2,3,5,8,13,21,34,55
 
 
 /*
- * EXCERSIZE 3:
+ * EXERCISE 3:
  *
  * "Eratostenes's sieve" is an algorithm that calculates all prime numbers between 2 and a set upper boundary n:
  *
@@ -170,7 +170,7 @@ for i in eratostenes_2(19) {
 
 
 /*
- * EXCERSIZE 4: 
+ * EXERCISE 4: 
  * 
  * The Bubblesort algorithm works as follows:
  * Two elements that are next to each other are compared:

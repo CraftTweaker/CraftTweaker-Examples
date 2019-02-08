@@ -1,5 +1,5 @@
 /*
- * EXCERSIZE 1
+ * EXERCISE 1
  *
  * Write a function that accepts a year number as input and checks whether or not this year is a leap year.
  * 
