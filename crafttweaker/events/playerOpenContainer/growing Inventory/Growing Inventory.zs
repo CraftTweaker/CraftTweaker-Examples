@@ -14,7 +14,7 @@ import crafttweaker.event.PlayerOpenContainerEvent;
  * We also print all items to the Crafttweaker log
  *
  * To make things fun we will set every item's stack size to their 
- * slot's index in the container
+ * slot's index in the container, so items in slot 1 will have a stacksize of 1, and items in slot 10 will have a stack size of 10.
  */
 
 events.onPlayerOpenContainer(function(event as PlayerOpenContainerEvent){
