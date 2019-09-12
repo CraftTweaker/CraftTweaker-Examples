@@ -1,6 +1,5 @@
-#debug
 /*
- * EXCERSIZE 1
+ * EXERCISE 1
  *
  * Create a program that prints a temparature table from Fahrenheit to Celsius
  * The table should start at 0° F and end at 300 ° Fahrenheit.
@@ -20,7 +19,7 @@
  */
 
 
-print("Excersize 1: Temperature table");
+print("Exercise 1: Temperature table");
 
 print("Fahrenheit | Celsius");
 print("-----------|--------");
@@ -33,7 +32,7 @@ for i in 0 .. 15 {
     
 
 /*
- * EXCERSIZE 2
+ * EXERCISE 2
  *
  * The wildlife stock in a forest equals 200 Deer
  * Every year, the population grows by 10% relative to the beginning of the given year.
@@ -64,7 +63,7 @@ for i in 0 .. 15 {
  */
 
 
-print("Excersize 2: Deer");
+print("Exercise 2: Deer");
 var deer = 200 as int;
 print("Deer at the beginning: " ~ deer);
 
@@ -79,7 +78,7 @@ while(deer < 300) {
 
 
 /*
- * EXCERSIZE 3
+ * EXERCISE 3
  * 
  * Write a program that prints a 10x10 multiplication table
  *
@@ -99,7 +98,7 @@ while(deer < 300) {
  *
  */
 
-print("Excersize 3: Multiplication table");
+print("Exercise 3: Multiplication table");
 
 for i in 0 .. 11 {
     var line = "";
@@ -111,7 +110,7 @@ for i in 0 .. 11 {
 
 
 /*
- * Excersize 4
+ * EXERCISE 4
  *
  * The Babylonian way of extracting a mathematical root (also called as Heron-Algorithm) is an older iterative Algorithm to approximate a number's square root.
  *
@@ -145,7 +144,7 @@ for i in 0 .. 11 {
  *
  */
 
-print("Excersize 4: Heron");
+print("Exercise 4: Heron");
 
 function heron(number as double) as void {
     var Xn = 1.0D;

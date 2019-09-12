@@ -1,5 +1,5 @@
 /*
- * EXCERSIZE 1
+ * EXERCISE 1
  *
  * Read the program fragment below, and explain how the computer converts a floating point variable to an integer.
  *
@@ -17,7 +17,7 @@ print("E as whole number: " ~ eInt);
 
 
 /*
- * EXCERSIZE 2
+ * EXERCISE 2
  *
  * Find a way to print pi and e to rounded half away from zero (i.e. if the value after the comma is >= 0.5 you round up, otherwise you round down)
  *
@@ -32,7 +32,7 @@ print("E as whole number (rounded): " ~ eIntRounded);
 
 
 /*
- * EXCERSIZE 3
+ * EXERCISE 3
  *
  * Adapt the algorithm above to also work with negative numbers
  * Use a function that stores the algorithm

@@ -1,5 +1,5 @@
 /*
- * EXCERSIZE
+ * EXERCISE
  *
  * Calculate the date for easter following the algorithm Gauß published 1816.
  *
