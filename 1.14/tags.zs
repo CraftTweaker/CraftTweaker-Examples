@@ -1,4 +1,4 @@
-// No limit on tag names right now, so in theory you could register a tag as <tag:minecraft:now_exists> and it will create the tag, I don't know how I feel about this, so it may change to be limited to the <tag:crafttweaker:*> modid.now_exists.
+// No limit on tag names right now, so in theory you could register a tag as <tag:minecraft:now_exists> and it will create the tag, I don't know how I feel about this, so it may change to be limited to the <tag:crafttweaker:*> modid.
 
 //<tag:crafttweaker:not_exists>.addItems(<item:minecraft:diamond>);   // ERROR: tag "crafttweaker:not_exists" is not an ItemTag
 //<tag:crafttweaker:not_exists>.addBlock(<block:minecraft:stone>);    // ERROR: tag "crafttweaker:not_exists" is not a BlockTag
