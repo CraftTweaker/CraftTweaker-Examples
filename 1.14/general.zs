@@ -19,7 +19,7 @@ craftingTable.addShapeless("claytomore", <item:minecraft:clay> * 8, [<item:minec
 
 craftingTable.addShapedMirrored("shaped_test", <item:minecraft:furnace>, [[<item:minecraft:diamond>, <item:minecraft:diamond>,<item:minecraft:diamond>], [<item:minecraft:diamond>, <item:minecraft:air>, <item:minecraft:diamond>], [<item:minecraft:diamond>,<item:minecraft:diamond>,<item:minecraft:diamond>]], null);
 
-craftingTable.addShaped("shaped_mirror_test", <item:minecraft:arrow>, [[<item:minecraft:diamond>, <item:minecraft:diamond>], [<item:minecraft:air>, <item:minecraft:flint>], [<item:minecraft:air>, <item:minecraft:flint>]], null);
+craftingTable.addShaped("shaped_mirror_test", <item:minecraft:arrow>, [[<item:minecraft:diamond>, <item:minecraft:diamond>], [<item:minecraft:air>, <item:minecraft:flint>]], null);
 
 craftingTable.removeRecipe(<item:minecraft:black_dye>);
 
@@ -35,8 +35,12 @@ furnace.removeRecipe(<item:minecraft:stone>, <item:minecraft:cobblestone>);
 
 stoneCutter.addRecipe("name", <item:minecraft:diamond>, <item:minecraft:dirt>);
 
+composter.setValue(<item:minecraft:diamond>, 1.0);
+
+
 println(<blockstate:minecraft:grass_block:snowy=true> as string);
 println(<blockstate:minecraft:grass_block:snowy=false> as string);
+println(<blockstate:minecraft:snow_block>.commandString);
 
 
 // Stuff inside a "snip" will only be added to a script if a condition is met, see the modnotloaded snip below
@@ -61,3 +65,20 @@ println("Waiting"); #snip start println("for the day");
 #snip modnotloaded botania
 println("BOTANIA");
 #snip end
+
+#<item:minecraft:melon_slice>.food.fastEating = true;
+
+print("I am lowercase".length);
+
+print("I am lowercase".toUpperCase());
+
+print("    I am lowercase    ".trim());
+print("I am left".lpad(50, 'r'));
+
+for s in "Hello World, I am a beautiful butterfly".split(' ') {
+    println(s);
+}
+logger.info("test");
+
+
+craftingTable.addShaped("testrecipe", <item:minecraft:diamond> *4, [[<item:minecraft:netherrack>, <item:minecraft:netherrack>], [<item:minecraft:netherrack>, <item:minecraft:netherrack>]]);
