@@ -1,2 +1,2 @@
 # CraftTweaker-Examples
-Repo for Exampes!
+Repo for Examples!
