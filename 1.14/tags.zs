@@ -1,37 +1,70 @@
-// No limit on tag names right now, so in theory you could register a tag as <tag:minecraft:now_exists> and it will create the tag, I don't know how I feel about this, so it may change to be limited to the <tag:crafttweaker:*> modid.now_exists.
+import crafttweaker.api.tag.MCTag;
+import crafttweaker.api.item.IItemStack;
+import crafttweaker.api.item.IIngredient;
+import crafttweaker.api.item.MCItemDefinition;
+import stdlib.List;
+//Tags are like a way of grouping more than one item in a same recipe.
+//There's different types of tags: Item tags, block tags, fluid tags and entity tags.
+//You can use both default tags (added by forge or mods) or your own custom ones. /ct dump tags will return the list of tags in your game to the CrT log.
 
-//<tag:crafttweaker:not_exists>.addItems(<item:minecraft:diamond>);   // ERROR: tag "crafttweaker:not_exists" is not an ItemTag
-//<tag:crafttweaker:not_exists>.addBlocks(<blockstate:minecraft:stone>);    // ERROR: tag "crafttweaker:not_exists" is not a BlockTag
-//<tag:crafttweaker:not_exists>.addEntityTypes(<entity:minecraft:zombie>); // ERROR: tag "crafttweaker:not_exists" is not an EntityTag
-//<tag:crafttweaker:not_exists>.addFluids(<fluid:minecraft:water>);    // ERROR: tag "crafttweaker:not_exists" is not a FluidTag // Not implemented yet!!
-//
-//<tag:crafttweaker:now_exists>.createItemTag();    // Registered new ItemTag with name "crafttweaker:now_exists"
-//
-//<tag:crafttweaker:now_exists>.addItems(<item:minecraft:diamond>);   // Added diamond to ItemTag "crafttweaker:now_exists"
-//<tag:crafttweaker:now_exists>.addBlocks(<block:minecraft:stone>);    // ERROR: tag "crafttweaker:not_exists" is not a BlockTag
-//<tag:crafttweaker:now_exists>.addEntityTypes(<entity:minecraft:zombie>); // ERROR: tag "crafttweaker:not_exists" is not an EntityTag
-//<tag:crafttweaker:now_exists>.addFluids(<fluid:minecraft:water>);    // ERROR: tag "crafttweaker:not_exists" is not a FluidTag // Not implemented yet!!
+//An example of an item tag is : "<tag:items:minecraft:planks>", which by default includes all different kinds of Vanilla wood types. It is very possible that
+//a mod that adds new kinds of wood will add those into this Tag.
 
-//<tag:crafttweaker:now_exists>.createBlockTag();    // Registered new BlockTag with name "crafttweaker:now_exists"
-//<tag:crafttweaker:now_exists>.createEntityTypeTag();    // Registered new EntityTypeTag with name "crafttweaker:now_exists"
-//<tag:crafttweaker:now_exists>.createFluidTag();    // Registered new ItemTag with name "crafttweaker:now_exists"  // Not implemented yet!!
+//Onto tweaking Tags. (Import just in case : crafttweaker.api.tag.MCTag)
+//Tag type is very important! You cannot add Items onto a Block Tag or Fluids onto an Entity Tag!
+//A BlockTag requires an MCBlock, An EntityTag requires an MCEntityType, An ItemTag requires an IItemStack or MCItemDefinition and a FluidTag requires a FluidStack or an MCFluid.
+//Technically, the Item and Fluid tags require the definition, but to make scripts easier to read you can also provide the Stack.
+//With the new changes to tags, now you have to specify the kind of tag. Notice the "<tag:items:forge:name>" or "<tag:fluids:crafttweaker:name>". If you wish to add a new tag, just write crafttweaker in between the tagtype and the name.
+//Tags ignore NBT data.
 
 
-var wool  = <tag:minecraft:wool>;
-for item in wool.items {
-    println(wool.commandString + " contains: " + item.displayName);
+//Tweaking existing tags:
+//Let's say you are a heartless monster and you consider redstone to be a gem. But forge doesn't agree with you. So you get the forge tag for gems which is:
+var forge_gems = <tag:items:forge:gems>;
+
+//You can also print the elements forming it by using:
+for tag in forge_gems.elements {
+	println(tag.commandString); //Tags can implicitly cast to string using their commandString getter
 }
+/*Which prints to the log:
+[22:04:39.878][DONE][SERVER][INFO] <item:minecraft:diamond>.definition
+[22:04:39.878][DONE][SERVER][INFO] <item:minecraft:emerald>.definition
+[22:04:39.879][DONE][SERVER][INFO] <item:minecraft:lapis_lazuli>.definition
+[22:04:39.879][DONE][SERVER][INFO] <item:minecraft:prismarine_crystals>.definition
+[22:04:39.879][DONE][SERVER][INFO] <item:minecraft:quartz>.definition
+*/
 
+//So if you wanted to add redstone to the gems you'd do:
+forge_gems.add(<item:minecraft:redstone>);
 
-var out = <item:minecraft:string> * 4;
-craftingTable.addShapeless("wool2string", out, [<tag:minecraft:wool>]);
+//And by the same rule of thumb, if you wanted to remove prismarine crystals because you don't want them to be used when a real "Gem" is required, you could remove them from the tag with the remove method.
+forge_gems.remove(<item:minecraft:prismarine_crystals>);
 
-<tag:minecraft:planks>.addItems([<item:minecraft:glass>]);
-<tag:minecraft:wool>.removeItems([<item:minecraft:white_wool>]);
+//Let's print again to see the contents of forge:gems after these changes:
+for tag in forge_gems.elements {
+	println(tag.commandString); //Tags can implicitly cast to string using their commandString getter
+}
+/* Which gives us:
+[22:13:38.400][DONE][CLIENT][INFO] <item:minecraft:diamond>.definition
+[22:13:38.400][DONE][CLIENT][INFO] <item:minecraft:emerald>.definition
+[22:13:38.400][DONE][CLIENT][INFO] <item:minecraft:lapis_lazuli>.definition
+[22:13:38.401][DONE][CLIENT][INFO] <item:minecraft:quartz>.definition
+[22:13:38.401][DONE][CLIENT][INFO] <item:minecraft:redstone>.definition
+*/
 
-<tag:crafttweaker:ingots>.createItemTag();
-<tag:crafttweaker:ingots>.addItems([<item:minecraft:iron_ingot>, <item:minecraft:gold_ingot>]);
+//As for custom tags, the moment you add something to a tag, if the tag doesnt exist it will be created. Make sure what you are adding and the tagType match!
 
-craftingTable.addShapeless("new_tag_test", <item:minecraft:diamond>, [<tag:crafttweaker:ingots>,<tag:crafttweaker:ingots>,<tag:crafttweaker:ingots>]);
+//This tag will contain all pickaxes.
+<tag:items:crafttweaker:all_pickaxes>.add(<item:minecraft:wooden_pickaxe>);
+<tag:items:crafttweaker:all_pickaxes>.add(<item:minecraft:stone_pickaxe>);
+<tag:items:crafttweaker:all_pickaxes>.add(<item:minecraft:iron_pickaxe>);
+<tag:items:crafttweaker:all_pickaxes>.add(<item:minecraft:golden_pickaxe>);
+<tag:items:crafttweaker:all_pickaxes>.add(<item:minecraft:diamond_pickaxe>);
+<tag:items:crafttweaker:all_pickaxes>.add(<item:minecraft:netherite_pickaxe>);
 
-<tag:minecraft:wither_immune>.addBlocks(<blockstate:minecraft:stone>);
+var pickaxeAll = <tag:items:crafttweaker:all_pickaxes>;
+//Then you can do something like 1 Cobblestone Stairs turns into 3 Cobblestone, but it needs a pickaxe, and it consumed 2 durability.
+
+craftingTable.addShapeless("stairs_to_cobble", <item:minecraft:cobblestone> * 3, [<item:minecraft:cobblestone_stairs>, pickaxeAll.asIIngredient().transformDamage(2)]);
+
+//Have fun with your tags!
