@@ -1,0 +1,7 @@
+*  
+scripts/*
+!scripts/
+!scripts/*
+!.gitignore
+LICENSE
+README.md
