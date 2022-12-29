@@ -5,8 +5,7 @@ Ideally, this will become updated with every CraftTweaker release.
 
 The goal of this repository is to provide examples of features, both simple and complex, with comments if possible.
 
-## The Version of this Branch is **1.19.2**. The repository attempts to provide scripts that work in all loaders without errors, by either providing scripts
-that work in both the same way or by using preprocessors to disable scripts when required.
+## The Version of this Branch is **1.19.2**. The repository attempts to provide scripts that work in all loaders without errors, by either providing scripts that work in both the same way or by using preprocessors to disable scripts when required.
 
 # Issues and Suggestions
 
