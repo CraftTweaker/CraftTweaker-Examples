@@ -14,4 +14,5 @@ furnace.removeByInput(<item:minecraft:raw_iron>);
 
 //Vanilla Recipes always have Item inputs and Item outputs, but modded recipes do not have to abide by that.
 
-//So what is our lesson here? If you want to remove modded recipes, removeByName will always work and never give you up, while the others, may let you down, run around, and desert you.
+//So what is our lesson here? 
+//If you want to remove modded recipes, removeByName will always work and never give you up, while the others, may let you down, run around, and desert you.
