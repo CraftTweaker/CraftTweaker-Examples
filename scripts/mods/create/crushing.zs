@@ -1,4 +1,5 @@
 #modloaded create 
+#modloader forge
 
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.ingredient.IIngredient;
@@ -7,6 +8,11 @@ import crafttweaker.api.util.random.Percentaged;
 
 //Preprocessor for the sake of the examples repository, so you can download it without requiring all mods!
 //The modloaded preprocessor only loads the script if the provided modid argument is loaded in the game.
+
+//The modloadeR preprocessor only loads the script in the provided ModLoader. In this case, Forge, as the creator of the script has not tested it in Fabric
+//and has suspicions it will be a 1:1 conversion.
+//(If you've been paying attention, you'll know that this means that essentially, mods CraftTweaker scripts work on multiple loaders, unless they touch specific things.
+//Cool thing huh?
 
 //The imports are ONLY used for casts. That's why they're required.
 
