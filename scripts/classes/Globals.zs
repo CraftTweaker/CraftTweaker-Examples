@@ -7,15 +7,15 @@ public class Globals {
     //Utility class to call in any script with the name to easily track in the log where the script start and ends.
     //Call with Globals.startScript("scriptName");
 
-    public static startScript(scriptName as string) {
+    public static startScript(scriptName as string) as void {
         println("===================================");
-        println("       Starting Script: " + scriptName + + ".zs       ");
+        println("       Starting Script: " + scriptName + ".zs       ");
         println("===================================");
     }
 
-    public static endScript(scriptName as string) {
+    public static endScript(scriptName as string) as void {
         println("===================================");
-        println("       Starting Script: " + scriptName + + ".zs       ");
+        println("       Starting Script: " + scriptName  + ".zs       ");
         println("===================================");
     }
 
