@@ -13,4 +13,6 @@
 //Most of the classes and types are missing from CraftTweaker though. 
 //You have access to the ZenCode classes, but not to the <item> bracket expression parser... So use resources and code smartly!
 
+//Custom classes don't exist here either... unless you make them in the loader tags!
+
 <tag:items:minecraft:planks>.addId(<resource:minecraft:tnt>); 

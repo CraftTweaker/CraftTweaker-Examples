@@ -1,5 +1,8 @@
 //No imports required unless you're making a recipe function!
 
+
+Globals.startScript("general_crafting");
+
 //Shotgun approach, removes ALL recipes that output TNT in the Crafting Table.
 craftingTable.remove(<item:minecraft:tnt>);
 
@@ -16,3 +19,6 @@ furnace.removeByInput(<item:minecraft:raw_iron>);
 
 //So what is our lesson here? 
 //If you want to remove modded recipes, removeByName will always work and never give you up, while the others, may let you down, run around, and desert you.
+
+
+Globals.endScript("general_crafting");

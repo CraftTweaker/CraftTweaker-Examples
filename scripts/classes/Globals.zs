@@ -15,7 +15,7 @@ public class Globals {
 
     public static endScript(scriptName as string) as void {
         println("===================================");
-        println("       Starting Script: " + scriptName  + ".zs       ");
+        println("       Ending Script: " + scriptName  + ".zs       ");
         println("===================================");
     }
 

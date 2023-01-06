@@ -28,6 +28,8 @@ and of course requiring a bit more of coding knowledge.
 Supporting NBT and other additionals is dependant on the mod you're trying to modify.
 */
 
+Globals.startScript("create_crushing_json");
+
 //Standard Recipe addition, hardcoded json contents.
 <recipetype:create:cutting>.addJsonRecipe("diamond_hoe_reusing", {
   "type": "create:cutting",
@@ -73,3 +75,6 @@ val internalItem = itemOut.getData();
 //As said before, <item:minecraft:stick> * 2 is an IItemStack, and calling IItemStack % chanceOutOf100 returns a valid Percentaged<IItemStack>.
 
 addCreateCutting(<tag:items:minecraft:planks>, <item:minecraft:stick> * 2 % 50, 200);
+
+
+Globals.endScript("create_crushing_json");
