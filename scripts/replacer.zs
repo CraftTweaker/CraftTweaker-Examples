@@ -1,3 +1,5 @@
+#debug
+
 import crafttweaker.api.ingredient.IIngredient;
 import crafttweaker.api.recipe.replacement.Replacer;
 import crafttweaker.api.tag.type.KnownTag;
@@ -12,15 +14,15 @@ Globals.startScript("replacer");
 var oresTag as KnownTag<ItemDefinition>;
 var axesTag as KnownTag<ItemDefinition>;
 
-#snip modloader forge
+#onlyIf modloader forge
 oresTag = <tag:items:forge:ores>;
 axesTag = <tag:items:forge:tools/axes>;
-#snip end
+#endIf
 
-#snip modloader fabric
+#onlyIf modloader fabric
 oresTag = <tag:items:c:ores>;
 axesTag = <tag:items:c:axes>;
-#snip end
+#endIf
 
 
 //Start the replacer.
