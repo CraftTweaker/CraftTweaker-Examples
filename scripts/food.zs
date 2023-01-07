@@ -27,4 +27,14 @@ for futureFoodItem in edibleItems {
     futureFoodItem.food = myFood;
 }
 
+//Makes the following items inedible:
+
+val inedibleItems = [
+    <item:minecraft:golden_carrot>
+];
+
+for inedible in inedibleItems {
+    inedible.food = null;
+}
+
 Globals.endScript("food");
