@@ -1,5 +1,3 @@
-#debug
-
 import crafttweaker.api.ingredient.IIngredient;
 import crafttweaker.api.recipe.replacement.Replacer;
 import crafttweaker.api.tag.type.KnownTag;
