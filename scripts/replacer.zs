@@ -22,6 +22,9 @@ oresTag = <tag:items:c:ores>;
 axesTag = <tag:items:c:axes>;
 #endIf
 
+//For a big write up on Replacers, take a look at the following message on the CraftTweaker discord:
+//https://discord.com/channels/136877912698650625/929770828286029914/1069326234523291750
+
 
 //Start the replacer.
 Replacer.create()
