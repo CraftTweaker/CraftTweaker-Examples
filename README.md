@@ -13,7 +13,6 @@ If you have any issues with the examples provided here, please feel free to drop
 
 # Licensing
 
-This Repository is licensed under the MIT License, which means you're allowed to take from the scripts here but you NEED to provide Credit about it.
-Please link to the repository through a comment!
+Feel free to copy anything from this repository! We appreciate linking back and a comment for attribution, but it's not necessary.
 
 
