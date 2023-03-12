@@ -28,6 +28,10 @@ for futureFoodItem in edibleItems {
     futureFoodItem.food = myFood;
 }
 
+//The above is of course overengineered, if you already have an edible item
+//<item>.food = <item>.food.addEffect(...); will work 
+// A challenge for you: Remove the poison effect from pufferfishes!
+
 //Makes the following items inedible:
 
 val inedibleItems = [
