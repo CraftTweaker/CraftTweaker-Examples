@@ -8,6 +8,7 @@ val edibleItems = [
     <item:minecraft:diamond_sword>
 ];
 
+//An alternative could be <item>.food if you just wanted to add an effect to an existing food without figuring out the actual values.
 var myFood = FoodProperties.create(4, 2.0);
 
 //Check out more things you can do with FoodProperties here: https://docs.blamejared.com/1.19/en/vanilla/api/food/FoodProperties
