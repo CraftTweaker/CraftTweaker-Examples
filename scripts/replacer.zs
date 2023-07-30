@@ -14,7 +14,7 @@ var axesTag as KnownTag<ItemDefinition>;
 
 #onlyIf modloader forge
 oresTag = <tag:items:forge:ores>;
-axesTag = <tag:items:forge:tools/axes>;
+axesTag = <tag:items:minecraft:axes>;
 #endIf
 
 #onlyIf modloader fabric
