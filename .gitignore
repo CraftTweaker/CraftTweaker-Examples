@@ -9,6 +9,7 @@ scripts/*
 !scripts/*
 !scripts/*/*    
 examples/
+scripts/bugs/
 !.gitignore
 LICENSE
 README.md
