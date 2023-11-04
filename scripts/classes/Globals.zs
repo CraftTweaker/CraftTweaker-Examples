@@ -21,6 +21,9 @@ public class Globals {
         println(EQUALS_SEPARATOR);
     }
 
-    //Coming soon: Global variables
+    public static val COLOURS as string[] = [
+    "white","orange","magenta","light_blue","yellow","lime","pink",
+    "gray","light_gray","cyan","purple","blue","brown","green","red","black"
+    ];
 
 }
