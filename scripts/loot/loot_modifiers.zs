@@ -12,6 +12,8 @@ import crafttweaker.api.predicate.ItemPredicate;
 
 import stdlib.List;
 
+Globals.startScript("loot_modifiers");
+
 // ========= LOOT MODIFIERS =========
 
 // Welcome to one of the probably most complicated yet powerful components of
@@ -217,6 +219,8 @@ loot.modifiers.register(
         return newList;
     }
 );
+
+Globals.endScript("loot_modifiers");
 
 // Woo, that was a lot to type. But now I hope you can see the inherent
 // complexity of what loot modifiers allow you to do: you can manipulate and
