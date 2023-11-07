@@ -1,4 +1,10 @@
+//These imports are NOT required for most of the crafting table operations.
+//They're only used in some operations and even then only the first one is required.
+
 import crafttweaker.api.recipe.MirrorAxis;
+import crafttweaker.api.tag.type.KnownTag;
+import crafttweaker.api.item.ItemDefinition;
+
 
 Globals.startScript("crafting_table");
 
@@ -45,12 +51,36 @@ craftingTable.addShaped("coal_compression", <item:minecraft:diamond_block>, [
 //A well-known example of this is the filled bucket being transformed to an empty one.
 
 //The transformDamage transformer causes the used Iron sword to take one point of damage whenever crafted
+//Any Damage is there so it can be used whenever durability is > 0 and not durability == maxDurability.
 //Careful, this won't be affected by enchantments.
-craftingTable.addShapeless("exmaple_transformer_anydamage_transform_damage", <item:minecraft:iron_nugget>, [<item:minecraft:iron_sword>.anyDamage().transformDamage()]);
+craftingTable.addShapeless("exmaple_transformer_anydamage_transform_damage", <item:minecraft:iron_nugget>,
+   [<item:minecraft:iron_sword>.anyDamage().transformDamage()]);
+
+var pickaxesTag as KnownTag<ItemDefinition>;
+var ironTag as KnownTag<ItemDefinition>;
+
+//specialHandling so that the script works on both loaders. You don't need this most of the time.
+
+#onlyIf modloader forge 
+pickaxesTag = <tag:items:minecraft:pickaxes>;
+ironTag = <tag:items:forge:ingots/iron>;
+#endIf
+
+#onlyIf modloader fabric
+pickaxesTag = <tag:items:c:pickaxes>;
+ironTag = <tag:items:c:iron_ingots>;
+#endIf
+
+//If you're using a tag, this needs special handling:
+//Attempting to use any of the conditioned item transformers on a tag without using asIIngredient()
+//first will result in an error.
+craftingTable.addShapeless("example_transformer_tag_anydamage", <item:minecraft:heavy_weighted_pressure_plate>, 
+  [pickaxesTag.asIIngredient().anyDamage().transformDamage(), ironTag]);
 
 //The reuse transformer causes the item to stay in the grid
 //This recipe would allow you to extract an infinite number of diamonds when you place a diamond Sword in the crafting grid
-craftingTable.addShapeless("example_transformer_reuse", <item:minecraft:diamond>, [<item:minecraft:diamond_axe>.reuse()]);
+craftingTable.addShapeless("example_transformer_reuse", <item:minecraft:diamond>,
+   [<item:minecraft:diamond_axe>.reuse()]);
 
 //There is an extra type of shaped recipes, known as Mirrored. Those are used by some of vanilla's recipes, 
 //such as axes or hoes, to allow mirroring in an axis.
