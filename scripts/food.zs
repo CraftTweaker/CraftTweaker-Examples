@@ -9,7 +9,7 @@ val edibleItems = [
 ];
 
 //An alternative could be <item>.food if you just wanted to add an effect to an existing food without figuring out the actual values.
-var myFood = FoodProperties.create(4, 2.0);
+var myFood = FoodProperties.create(4, 2.0, true, 2);
 
 //Check out more things you can do with FoodProperties here: https://docs.blamejared.com/1.19/en/vanilla/api/food/FoodProperties
 //Methods are instance based, so you either do:
@@ -20,12 +20,12 @@ myFood = myFood.setIsMeat();
 
         OR
 
-var myFood = FoodProperties.create(4, 2.0).setIsMeat();
+var myFood = FoodProperties.create(4, 2.0, true, 2).setIsMeat();
 
 */
 
 for futureFoodItem in edibleItems {
-    futureFoodItem.food = myFood;
+    futureFoodItem.definition.food = myFood;
 }
 
 //The above is of course overengineered, if you already have an edible item
@@ -39,7 +39,7 @@ val inedibleItems = [
 ];
 
 for inedible in inedibleItems {
-    inedible.food = null;
+    inedible.definition.remove(<componenttype:minecraft:food>);
 }
 
 Globals.endScript("food");

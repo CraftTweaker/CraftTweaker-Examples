@@ -22,11 +22,6 @@ furnace.removeByInput(<item:minecraft:raw_iron>);
 
 //Sets the display name of the single stack you craft in this recipe.
 //Does not apply it globally. For that, use a resourcepack.
-craftingTable.addShapeless("tofurkey_plate", <item:minecraft:tnt>.withDisplayName("Plate of Roast Tofurkey") *2, [<item:minecraft:emerald>]);
-
-//View the NBT of a modified tnt IItemStack. Useful for json recipes.
-println("Printing NBT of modified stack!");
-//Acquire this with /ct hand. Otherwise, it won't work.
-println(((<item:minecraft:tnt>.withTag({display: {Name: "{\"text\":\"Plate of Roast Tofurkey\"}"}}) * 2) as IData).getAsString());
+craftingTable.addShapeless("tofurkey_plate", <item:minecraft:tnt>.withCustomName("Plate of Roast Tofurkey") *2, [<item:minecraft:emerald>]);
 
 Globals.endScript("general_crafting");

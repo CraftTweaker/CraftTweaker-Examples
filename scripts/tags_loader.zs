@@ -15,4 +15,4 @@
 
 //Custom classes don't exist here either... unless you make them in the loader tags!
 
-<tag:items:minecraft:planks>.addId(<resource:minecraft:tnt>); 
+<tag:item:minecraft:planks>.addId(<resource:minecraft:tnt>); 

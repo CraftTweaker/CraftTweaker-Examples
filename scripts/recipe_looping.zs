@@ -1,5 +1,6 @@
 import crafttweaker.api.recipe.type.Recipe;
 import crafttweaker.api.world.Container;
+import crafttweaker.api.recipe.RecipeHolder;
 
 Globals.startScript("recipe_looping");
 
@@ -14,10 +15,11 @@ Globals.startScript("recipe_looping");
 //already be implemented as an IRecipeManager method. Make sure to check those out!
 
 //This cast is required!    
-val furnaceRecipes = furnace.getAllRecipes() as stdlib.List<Recipe<Container>>;
-for recipe in furnaceRecipes {
+val furnaceRecipes = furnace.allRecipes as stdlib.List<RecipeHolder<Recipe<Container>>>;
+for holder in furnaceRecipes {
+    val recipe = holder.value;
     if (!recipe.group.empty) {
-        println("> " + recipe.id);
+        println("> " + holder.id);
     }
 }
 

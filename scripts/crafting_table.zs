@@ -4,6 +4,10 @@
 import crafttweaker.api.recipe.MirrorAxis;
 import crafttweaker.api.tag.type.KnownTag;
 import crafttweaker.api.item.ItemDefinition;
+import crafttweaker.api.item.IItemStack;
+import crafttweaker.api.text.Component;
+import crafttweaker.api.data.ListData;
+import crafttweaker.api.item.component.ItemEnchantments;
 
 
 Globals.startScript("crafting_table");
@@ -61,15 +65,8 @@ var ironTag as KnownTag<ItemDefinition>;
 
 //specialHandling so that the script works on both loaders. You don't need this most of the time.
 
-#onlyIf modloader forge 
-pickaxesTag = <tag:items:minecraft:pickaxes>;
-ironTag = <tag:items:forge:ingots/iron>;
-#endIf
-
-#onlyIf modloader fabric
-pickaxesTag = <tag:items:c:pickaxes>;
-ironTag = <tag:items:c:iron_ingots>;
-#endIf
+pickaxesTag = <tag:item:minecraft:pickaxes>;
+ironTag = <tag:item:c:ingots/iron>;
 
 //If you're using a tag, this needs special handling:
 //Attempting to use any of the conditioned item transformers on a tag without using asIIngredient()
@@ -91,4 +88,38 @@ craftingTable.addShapedMirrored("shaped_mirror_example_1", MirrorAxis.DIAGONAL, 
     [<item:minecraft:air>, <item:minecraft:flint>]
 ]);
 
+val books = <item:minecraft:enchanted_book>.withEnchantment(<enchantment:minecraft:unbreaking>, 3)
+| <item:minecraft:enchanted_book>.withEnchantment(<enchantment:minecraft:mending>, 2);
+
+public function max(a as int, b as int) as int {
+  return (a > b) ? a : b;
+}
+
+//Add a recipe to enchant elytra
+//This needs a special recipe function to copy enchantments and durability from the input to the output
+
+craftingTable.addShaped("elyta_enchanting", <item:minecraft:elytra>, 
+  [[<item:minecraft:elytra>.anyDamage(), books]],
+  //We use a shaped recipe  because its less annoying to handle, you can also use a shapeless recipe and a loop to find the variables in the array.
+  (output as IItemStack, inputs as IItemStack[][]) => {
+    val container = inputs[0];
+    val elytra = container[0]; //This is guaranteed because of our recipe inputs defined in line 104.
+    val book = container[1];
+    val newElytra = elytra;
+    
+    val elytraEnchs = newElytra.hasEnchantments ? newElytra.enchantments : ItemEnchantments.empty();
+    for ench, level in book.enchantments.entries {
+      if (ench.canEnchant(newElytra)) {
+        elytraEnchs.entries[ench] = max(level ?? 0, elytraEnchs.getLevel(ench));
+      }
+    }
+    for ench, level in elytraEnchs.entries {
+      println(ench.registryName as string + " " + level);
+    }
+    if (elytraEnchs.size == 0) return <item:minecraft:air>;
+    return newElytra.withEnchantments(elytraEnchs);
+  });
+
 Globals.endScript("crafting_table");
+
+

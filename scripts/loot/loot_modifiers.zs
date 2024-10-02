@@ -99,6 +99,14 @@ val customGlm = loot.modifiers.getByName("examplemod:custom_glm");
 val allKnownModifiers = loot.modifiers.getAll();
 val allKnownModifierNames = loot.modifiers.getAllNames();
 
+val extra_items as IItemStack[] = [
+    <item:minecraft:iron_nugget>
+];
+
+<entitytype:minecraft:zombie>.addLootModifier("zombies_drop_extra", 
+    CommonLootModifiers.addAll(extra_items)
+);
+
 // ---- ADDING ----
 // Now we come to the more spicy part of the loot modifier matter: adding custom
 // ones. Now, to do that we need to understand that loot modifiers are nothing
@@ -233,7 +241,3 @@ Globals.endScript("loot_modifiers");
 // loot conditions interoperate.
 
 // Happy tweaking!
-
-#noload
-// The line above will prevent the script from running, ensuring examples do not affect your current setup.
-// Feel free to comment or remove the line if you want to see a particular example in action.
